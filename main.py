@@ -95,4 +95,4 @@ if seconds >= 1000000:
 elif seconds >= 10000000:
     print("Greater than 10 milions")
 else:
-    print("None of these")
+    print("None of these...")
