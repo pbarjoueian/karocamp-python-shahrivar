@@ -11,25 +11,16 @@ class Person:
         return 1403 - self.birth_year
 
 
-# person_1 = Person(first_name="Peyman", last_name="Barjoueian", birth_year=1370)
-# person_1.print_name()
-
-
-# person_2 = Person(first_name="Mahsa", last_name="Aminian", birth_year=1385)
-# person_2.print_name()
-
-
-# print(person_1.get_age())
-# print(person_2.get_age())
-
-
 class Student(Person):
+    total_student_objects = 0
+
     def __init__(
         self,
         first_name: str,
         last_name: str,
         birth_year: int,
         student_id: int,
+        password: str,
         major: str,
     ):
         """Initialize the Student object.
@@ -42,16 +33,38 @@ class Student(Person):
             first_name=first_name, last_name=last_name, birth_year=birth_year
         )
         self.student_id = student_id
-        self.major = major
+        self._major = major
+        self.__password = password
+        Student.total_student_objects += 1
 
     def print_name(self):
         print(
             f"{self.major} | {self.student_id}: {self.first_name.upper()} {self.last_name.upper()}"
         )
 
-    def set_major(self, new_major: str):
-        self.major = new_major
+    @staticmethod
+    def get_total_student_objects() -> int:
+        return Student.total_student_objects
+
+    @property
+    def major(self) -> str:
+        return self._major
+
+    @major.setter
+    def major(self, new_major: str):
+        self._major = new_major
         print("Major has been changed...!")
+
+    def __get_password(self) -> str:
+        return self.__password
+
+    def get_hashed_password(self) -> str:
+        password = self.__get_password()
+        return "!@#$$" + str(password) + "ERFE%$@5252"
+
+    def set_password(self, new_password: str):
+        self.__password = new_password
+        print("Password has been changed.")
 
 
 class Employee(Person):
@@ -75,24 +88,62 @@ class Employee(Person):
         )
 
 
-st1 = Student(
-    first_name="Nima",
-    last_name="Jalali",
-    birth_year=1372,
-    student_id=12345,
-    major="Computer Science",
-)
+# st1 = Student(
+#     first_name="Nima",
+#     last_name="Jalali",
+#     birth_year=1372,
+#     student_id=12345,
+#     password=1234567,
+#     major="Computer Science",
+# )
 
-emp1 = Employee(
-    first_name="Ahmad",
-    last_name="Ahmadian",
-    birth_year=1372,
-    employee_id=1234567,
-    department_name="HR",
-)
+# st2 = Student(
+#     first_name="Ahmad",
+#     last_name="Mohammadi",
+#     birth_year=1370,
+#     student_id=54321,
+#     password=98765,
+#     major="Computer Engineering",
+# )
 
-st1.print_name()
-emp1.print_name()
+# print(Student.get_total_student_objects())
 
-st1.set_major(new_major="Mathematics")
-st1.print_name()
+# print(st1.get_hashed_password())
+# st1.set_password(new_password=1234)
+# print(st1.get_hashed_password())
+
+# st1.major = "Mathematics"
+# print(st1.major)
+
+
+# emp1 = Employee(
+#     first_name="Ahmad",
+#     last_name="Ahmadian",
+#     birth_year=1372,
+#     employee_id=1234567,
+#     department_name="HR",
+# )
+
+
+# li = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61]
+
+# final_list = list(filter(lambda x: (x % 2 != 0), li))
+# print(final_list)
+
+
+# def my_function(name, *args, **kwargs):
+#     print(name)
+#     for arg in args:
+#         print(arg)
+#     print(kwargs)
+
+
+# my_function("Peyman", 2, 3, 4, grade=5, keyword1=4, keyword2="foo")
+
+
+def print_fullname(first_name, last_name):
+    print(first_name + " " + last_name)
+
+
+my_dict = {"last_name": "Barjoueian", "first_name": "Peyman"}
+print_fullname(**my_dict)
