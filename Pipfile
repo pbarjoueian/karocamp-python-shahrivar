@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 persiantools = "*"
+pytest = "*"
+pytest-cov = "*"
 
 [dev-packages]
 isort = "*"
