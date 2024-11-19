@@ -1,7 +1,7 @@
 import logging
 from datetime import datetime
 
-logging.basicConfig(filename="summation.log", level=logging.debug, filemode="a")
+logging.basicConfig(filename="summation.log", level=logging.DEBUG, filemode="a")
 
 
 def summation(a: float, b: float) -> float:

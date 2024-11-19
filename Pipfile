@@ -7,6 +7,7 @@ name = "pypi"
 persiantools = "*"
 pytest = "*"
 pytest-cov = "*"
+psycopg2 = "*"
 
 [dev-packages]
 isort = "*"
