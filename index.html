@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beginners Guide</title>
+
+    <style>
+      /* CSS styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+
+      p {
+        color: #666;
+      }
+
+      #myButton {
+        display: block;
+        width: 120px;
+        height: 40px;
+        margin: 20px auto;
+        background-color: #4caf50;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        border-radius: 4px;
+        text-decoration: none;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome Beginners</h1>
+      <p>Click the button to toggle the visibility of the paragraph below:</p>
+      <button id="myButton">Toggle</button>
+      <p id="myParagraph" class="hidden">This paragraph is initially hidden.</p>
+    </div>
+
+    <script>
+      // JavaScript code
+      var button = document.getElementById("myButton");
+      var paragraph = document.getElementById("myParagraph");
+
+      button.addEventListener("click", function () {
+        if (paragraph.classList.contains("hidden")) {
+          paragraph.classList.remove("hidden");
+          button.textContent = "Hide";
+        } else {
+          paragraph.classList.add("hidden");
+          button.textContent = "Toggle";
+        }
+      });
+    </script>
+  </body>
+</html>
